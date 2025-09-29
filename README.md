@@ -17,11 +17,12 @@ This repo trains **GPT-2 small** (124M) on Wikipedia using **Tenstorrent TT-Trai
 
 ```bash
 # 1) Deps
-pip install -U datasets transformers matplotlib
+pip install requirements.txt
 
 # 2) TT-Train binding path
+tt-metal and tt-train are expected to be prebuilt from https://github.com/tenstorrent/ttml/
 export TT_METAL_HOME=/path/to/tt-metal
-# Expected: $TT_METAL_HOME/tt-train/build/sources/TT-Train/_TT-Train*.so
+# Expected: $TT_METAL_HOME/tt-train/build/sources/ttml/_ttml.so
 
 # 3) (Optional) pick Wikipedia snapshot
 export WIKI_DUMP=20220301.en  # default in code
@@ -115,7 +116,7 @@ At the end of training, `main.py` prints a greedy continuation for:
 
 ## Troubleshooting
 
-- **`_TT-Train` import error** — check `TT_METAL_HOME` path and that the built wheel/so is at `$TT_METAL_HOME/tt-train/build/sources/TT-Train/`.
+- **`_ttml` import error** — check `TT_METAL_HOME` path and that the built wheel/so is at `$TT_METAL_HOME/tt-train/build/sources/ttml/`.
 - **OOM** — reduce `batch_size` or `seq_len`, or increase `accumulation_steps`.
 - **Slow preprocessing** — set `max_docs` to a few thousand to smoke-test the pipeline.
 - **Rebuild shards** — delete `wiki_memmap_gpt2/manifest.json` (or change config).
