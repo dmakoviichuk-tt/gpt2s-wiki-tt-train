@@ -20,7 +20,7 @@ This repo trains **GPT-2 small** (124M) on Wikipedia using **Tenstorrent TT-Trai
 pip install requirements.txt
 
 # 2) TT-Train binding path
-tt-metal and tt-train are expected to be prebuilt from https://github.com/tenstorrent/ttml/
+tt-metal and tt-train are expected to be prebuilt from the https://github.com/tenstorrent/tt-metal/
 export TT_METAL_HOME=/path/to/tt-metal
 # Expected: $TT_METAL_HOME/tt-train/build/sources/ttml/_ttml.so
 
